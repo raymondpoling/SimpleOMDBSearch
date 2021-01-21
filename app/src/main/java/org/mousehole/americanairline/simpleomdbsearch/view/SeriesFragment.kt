@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.mousehole.americanairline.simpleomdbsearch.R
@@ -44,6 +45,8 @@ class SeriesFragment : Fragment() {
             synopsisTextView = v.findViewById(R.id.synopsis_textview)
 
             seasonRecyclerView = v.findViewById(R.id.season_recylerview)
+            val snapHelper = LinearSnapHelper()
+            snapHelper.attachToRecyclerView(seasonRecyclerView)
             seasonRecyclerView.adapter = seasonItemAdapter
         }
 
