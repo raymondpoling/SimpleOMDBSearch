@@ -10,6 +10,7 @@ import io.reactivex.schedulers.Schedulers
 import org.mousehole.americanairline.simpleomdbsearch.model.movie.MovieResponse
 import org.mousehole.americanairline.simpleomdbsearch.model.series.SeriesResponse
 import org.mousehole.americanairline.simpleomdbsearch.network.OMDBRetrofit
+import org.mousehole.americanairline.simpleomdbsearch.util.Constants.LOG_TAG
 
 class MovieViewModel : ViewModel() {
 
@@ -26,7 +27,7 @@ class MovieViewModel : ViewModel() {
                     movieLiveData.postValue(it)
                     movieCompositeDisposable.clear()
                 }, {
-                    Log.e("TAG_X", it.message, it)
+                    Log.e(LOG_TAG, it.message, it)
                 }))
         return movieLiveData
     }

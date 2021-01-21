@@ -1,7 +1,6 @@
 package org.mousehole.americanairline.simpleomdbsearch.network
 
 import io.reactivex.Single
-import org.mousehole.americanairline.simpleomdbsearch.model.episode.EpisodeResponse
 import org.mousehole.americanairline.simpleomdbsearch.model.movie.MovieResponse
 import org.mousehole.americanairline.simpleomdbsearch.model.season.SeasonResponse
 import org.mousehole.americanairline.simpleomdbsearch.model.series.SeriesResponse
@@ -24,11 +23,8 @@ object OMDBRetrofit {
     fun getSeries(seriesName : String) : Single<SeriesResponse> =
         omdbQueryService.getSeries(seriesName)
 
-    fun getSeason(seriesName : String, season : Int) : Single<SeasonResponse> =
+    fun getSeason(seriesName : String, season : String) : Single<SeasonResponse> =
         omdbQueryService.getSeason(seriesName, season)
-
-    fun getEpisode(seriesName : String, season : Int, episode : Int) : Single<EpisodeResponse> =
-            omdbQueryService.getEpisode(seriesName, season, episode)
 
     fun getMovie(movieName : String) : Single<MovieResponse> =
             omdbQueryService.getMovie(movieName)

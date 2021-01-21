@@ -3,11 +3,9 @@ package org.mousehole.americanairline.simpleomdbsearch.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.mousehole.americanairline.simpleomdbsearch.R
-import org.mousehole.americanairline.simpleomdbsearch.model.season.Episode
 import org.mousehole.americanairline.simpleomdbsearch.model.season.SeasonResponse
 
 class EpisodeAdapter(private var season:SeasonResponse) : RecyclerView.Adapter<EpisodeAdapter.EpisodeViewHolder>() {
@@ -33,4 +31,9 @@ class EpisodeAdapter(private var season:SeasonResponse) : RecyclerView.Adapter<E
     }
 
     override fun getItemCount(): Int = season.Episodes.size
+
+    fun updateSeasonResponse(season: SeasonResponse) {
+        this.season = season
+        notifyDataSetChanged()
+    }
 }

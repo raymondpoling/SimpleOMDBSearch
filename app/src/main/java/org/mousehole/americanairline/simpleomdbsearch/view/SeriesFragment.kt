@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.mousehole.americanairline.simpleomdbsearch.R
 import org.mousehole.americanairline.simpleomdbsearch.model.series.SeriesResponse
+import org.mousehole.americanairline.simpleomdbsearch.util.Constants.LOG_TAG
 import org.mousehole.americanairline.simpleomdbsearch.view.adapter.SeriesSeasonItemAdapter
 
 class SeriesFragment : Fragment() {
@@ -23,7 +24,7 @@ class SeriesFragment : Fragment() {
 
     private lateinit var seasonRecyclerView : RecyclerView
 
-    private val seasonItemAdapter = SeriesSeasonItemAdapter(listOf())
+    private val seasonItemAdapter = SeriesSeasonItemAdapter("", listOf())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,10 +57,10 @@ class SeriesFragment : Fragment() {
             val seasonList = try {
                 1.rangeTo(Integer.parseInt(it.totalSeasons))
             } catch (e : Exception) {
-                Log.d("TAG_X", "totalSeasons was not an integer? ${it.totalSeasons}")
-                listOf<Int>(1)
+                Log.d(LOG_TAG, "totalSeasons was not an integer? ${it.totalSeasons}")
+                listOf(1)
             }
-            seasonItemAdapter.setSeasonList(seasonList.toList())
+            seasonItemAdapter.setSeasonList(seriesResponse.Title, seasonList.toList())
 
             Glide.with(this).load(seriesResponse.Poster).into(posterImageView)
 

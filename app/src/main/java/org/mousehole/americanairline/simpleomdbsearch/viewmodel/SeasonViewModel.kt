@@ -10,6 +10,7 @@ import io.reactivex.schedulers.Schedulers
 import org.mousehole.americanairline.simpleomdbsearch.model.season.SeasonResponse
 import org.mousehole.americanairline.simpleomdbsearch.model.series.SeriesResponse
 import org.mousehole.americanairline.simpleomdbsearch.network.OMDBRetrofit
+import org.mousehole.americanairline.simpleomdbsearch.util.Constants.LOG_TAG
 
 class SeasonViewModel : ViewModel() {
 
@@ -17,7 +18,7 @@ class SeasonViewModel : ViewModel() {
 
     private val seasonLiveData: MutableLiveData<SeasonResponse> = MutableLiveData()
 
-    fun getSeasonResult(seriesName : String, season : Int) : LiveData<SeasonResponse> {
+    fun getSeasonResult(seriesName : String, season : String) : LiveData<SeasonResponse> {
         seasonCompositeDisposable.add(
             OMDBRetrofit.getSeason(seriesName, season)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -26,7 +27,7 @@ class SeasonViewModel : ViewModel() {
                     seasonLiveData.postValue(it)
                     seasonCompositeDisposable.clear()
                 }, {
-                    Log.e("TAG_X", it.message, it)
+                    Log.e(LOG_TAG, it.message, it)
                 }))
         return seasonLiveData
     }

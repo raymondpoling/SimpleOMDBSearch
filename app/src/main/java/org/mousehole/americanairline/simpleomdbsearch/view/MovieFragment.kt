@@ -1,19 +1,15 @@
 package org.mousehole.americanairline.simpleomdbsearch.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.mousehole.americanairline.simpleomdbsearch.R
 import org.mousehole.americanairline.simpleomdbsearch.model.movie.MovieResponse
-import org.mousehole.americanairline.simpleomdbsearch.model.series.SeriesResponse
-import org.mousehole.americanairline.simpleomdbsearch.view.adapter.SeriesSeasonItemAdapter
 
 class MovieFragment : Fragment() {
 
