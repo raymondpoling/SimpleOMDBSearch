@@ -4,8 +4,9 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="8dp"
     app:cardCornerRadius="32dp"
-    android:elevation="8dp">
+    android:elevation="4dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,8 +15,8 @@
         android:background="@color/light_blue">
 
         <TextView
+            style="@style/Title"
             android:id="@+id/episode_title_textview"
-            style="@style/StandardStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
@@ -27,7 +28,7 @@
 
         <TextView
             android:id="@+id/episode_season_episode_textview"
-            style="@style/StandardStyle"
+            style="@style/Subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -38,7 +39,7 @@
 
         <TextView
             android:id="@+id/episode_synopsis_textview"
-            style="@style/StandardStyle"
+            style="@style/TextBody"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="7"

@@ -28,6 +28,7 @@ class SeasonViewModel : ViewModel() {
                     seasonCompositeDisposable.clear()
                 }, {
                     Log.e(LOG_TAG, it.message, it)
+                    seasonCompositeDisposable.clear()
                 }))
         return seasonLiveData
     }

@@ -22,18 +22,18 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            style="@style/StandardStyle"
+            style="@style/Title"
             android:id="@+id/movie_title_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            app:layout_constraintTop_toTopOf="@id/poster_imageview"
-            app:layout_constraintStart_toEndOf="@id/poster_imageview"
+            app:layout_constraintTop_toTopOf="@id/movie_poster_imageview"
+            app:layout_constraintStart_toEndOf="@id/movie_poster_imageview"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="SHOW TITLE"/>
 
         <TextView
-            style="@style/StandardStyle"
+            style="@style/TextBody"
             android:id="@+id/movie_synopsis_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

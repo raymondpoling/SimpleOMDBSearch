@@ -11,7 +11,7 @@
         android:layout_margin="16dp" >
 
         <TextView
-            style="@style/StandardStyle"
+            style="@style/Subtitle"
             android:id="@+id/series_and_season_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:id="@+id/episode_recyclerview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/series_and_season_textview"

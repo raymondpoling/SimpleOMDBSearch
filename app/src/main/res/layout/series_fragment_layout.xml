@@ -22,7 +22,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            style="@style/StandardStyle"
+            style="@style/Title"
             android:id="@+id/series_title_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             tools:text="SHOW TITLE"/>
 
         <TextView
-            style="@style/StandardStyle"
+            style="@style/Subtitle"
             android:id="@+id/number_seasons_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             tools:text="Number of seasons" />
 
         <TextView
-            style="@style/StandardStyle"
+            style="@style/TextBody"
             android:id="@+id/synopsis_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

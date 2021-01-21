@@ -14,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.GlobalScope
 import org.mousehole.americanairline.simpleomdbsearch.R
 import org.mousehole.americanairline.simpleomdbsearch.model.SeasonData
@@ -92,22 +93,22 @@ class MainActivity : AppCompatActivity() {
 
     private val seasonReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
+            Log.d(LOG_TAG, "intent? $intent")
             if (intent?.action == Constants.SEASON_BROADCAST) {
                 intent.getSerializableExtra(Constants.SEASON_DATA)?.let {
                     it as SeasonData
                     seasonViewModel.getSeasonResult(it.series, it.season).observe(
                             this@MainActivity,
-                            { _ ->
+                            { u ->
                                 Log.d(LOG_TAG, "how often is this called?")
                                 supportFragmentManager
                                         .beginTransaction()
                                         .replace(R.id.main_frame, seasonFragment)
+//                                        .addToBackStack(seasonFragment.tag)
                                         .commitNow()
-                                seasonViewModel.getSeasonResult(it.series, it.season).observe(this@MainActivity,
-                                        { u ->
-                                            Log.d(LOG_TAG, "${it.season} response was: $u")
-                                            seasonFragment.updateSeason(u)
-                                        })
+                                Log.d(LOG_TAG, "${it.season} response was: $u")
+                                seasonFragment.updateSeason(u)
+
                             })
 
 
