@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/teal_200"
+    app:cardCornerRadius="32dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/episode_poster_imageview"
+        android:layout_width="208dp"
+        android:layout_height="208dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="16dp"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        style="@style/StandardStyle"
+        android:id="@+id/episode_title_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toTopOf="@id/episode_poster_imageview"
+        app:layout_constraintStart_toEndOf="@id/episode_poster_imageview"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="SHOW TITLE"/>
+
+        <TextView
+            style="@style/StandardStyle"
+            android:id="@+id/episode_season_episode_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toTopOf="@id/episode_title_textview"
+            app:layout_constraintStart_toEndOf="@id/episode_poster_imageview"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="SHOW TITLE"/>
+
+        <TextView
+        style="@style/StandardStyle"
+        android:id="@+id/episode_synopsis_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="7"
+        app:layout_constraintTop_toBottomOf="@id/episode_poster_imageview"
+        app:layout_constraintStart_toEndOf="@id/episode_poster_imageview"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="This is a description of this show, which you should totablly read because the poster might just be a piece of junk and who really needs that? I mean seriously, what the hell would you do if you didn't like something a whole hell of a lot, but completely ignored the synopsis and came to realise that it was all your fault due to negligence" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
