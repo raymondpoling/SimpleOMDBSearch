@@ -6,16 +6,17 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.RadioGroup
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
-import io.reactivex.disposables.CompositeDisposable
-import kotlinx.coroutines.GlobalScope
 import org.mousehole.americanairline.simpleomdbsearch.R
 import org.mousehole.americanairline.simpleomdbsearch.model.SeasonData
 import org.mousehole.americanairline.simpleomdbsearch.util.Constants
@@ -24,13 +25,15 @@ import org.mousehole.americanairline.simpleomdbsearch.viewmodel.MovieViewModel
 import org.mousehole.americanairline.simpleomdbsearch.viewmodel.SeasonViewModel
 import org.mousehole.americanairline.simpleomdbsearch.viewmodel.SeriesViewModel
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var searchEditText: EditText
     private lateinit var mainFrameLayout: FrameLayout
     private lateinit var searchButton: Button
     private lateinit var typeRadioGroup: RadioGroup
-
+    private lateinit var drawerLayout : DrawerLayout
+    private lateinit var mainLayout : ConstraintLayout
 
     private val seriesFragment: SeriesFragment = SeriesFragment()
     private val seriesViewModel: SeriesViewModel by viewModels()
@@ -55,29 +58,35 @@ class MainActivity : AppCompatActivity() {
             when (typeRadioGroup.checkedRadioButtonId) {
                 R.id.movie_radiobutton ->
                     addFragment(
-                        movieFragment,
-                        movieFragment::changeMovie,
-                        movieViewModel::getMovieResult,
-                        "movie"
+                            movieFragment,
+                            movieFragment::changeMovie,
+                            movieViewModel::getMovieResult,
+                            "movie"
                     )
                 else ->
                     addFragment(
-                        seriesFragment,
-                        seriesFragment::changeSeries,
-                        seriesViewModel::getSeriesResult,
-                        "series"
+                            seriesFragment,
+                            seriesFragment::changeSeries,
+                            seriesViewModel::getSeriesResult,
+                            "series"
                     )
             }
+            val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(mainLayout.windowToken, 0)
         }
-
+        drawerLayout = findViewById(R.id.search_drawerlayout)
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
         mainFrameLayout = findViewById(R.id.main_frame)
+
+        mainLayout = findViewById(R.id.main_layout)
+
     }
 
     private fun <T> addFragment(
-        fragment: Fragment,
-        modifyData: (T) -> Unit,
-        performSearch: (String) -> LiveData<T>,
-        aType: String
+            fragment: Fragment,
+            modifyData: (T) -> Unit,
+            performSearch: (String) -> LiveData<T>,
+            aType: String
     ) {
         supportFragmentManager
             .beginTransaction()

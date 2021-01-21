@@ -64,7 +64,7 @@ class SeriesFragment : Fragment() {
                 listOf(1)
             }
             seasonItemAdapter.setSeasonList(seriesResponse.Title, seasonList.toList())
-
+            seasonRecyclerView.scrollToPosition(0)
             Glide.with(this).load(seriesResponse.Poster).into(posterImageView)
 
         }

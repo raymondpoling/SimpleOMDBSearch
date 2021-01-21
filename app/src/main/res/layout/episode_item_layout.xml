@@ -15,8 +15,9 @@
         android:background="@color/light_blue">
 
         <TextView
-            style="@style/Title"
+            style="@style/Subtitle"
             android:id="@+id/episode_title_textview"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
@@ -28,27 +29,15 @@
 
         <TextView
             android:id="@+id/episode_season_episode_textview"
-            style="@style/Subtitle"
+            style="@style/TextBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/episode_title_textview"
-            tools:text="Season Episode" />
-
-        <TextView
-            android:id="@+id/episode_synopsis_textview"
-            style="@style/TextBody"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxLines="7"
-            android:layout_margin="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/episode_season_episode_textview"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="This is a description of this show, which you should totablly read because the poster might just be a piece of junk and who really needs that? I mean seriously, what the hell would you do if you didn't like something a whole hell of a lot, but completely ignored the synopsis and came to realise that it was all your fault due to negligence" />
+            tools:text="Season Episode" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

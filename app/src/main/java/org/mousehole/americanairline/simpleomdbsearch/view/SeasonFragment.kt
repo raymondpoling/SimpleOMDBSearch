@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import org.mousehole.americanairline.simpleomdbsearch.R
 import org.mousehole.americanairline.simpleomdbsearch.model.season.SeasonResponse
@@ -38,7 +39,7 @@ class SeasonFragment : Fragment() {
         Log.d(LOG_TAG, "onViewCreated id is? ${R.id.series_and_season_textview}")
 
         episodeRecyclerView = view.findViewById(R.id.episode_recyclerview)
-        val snapHelper = LinearSnapHelper()
+        val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(episodeRecyclerView)
         episodeRecyclerView.adapter = episodeAdapter
     }
@@ -47,6 +48,7 @@ class SeasonFragment : Fragment() {
         Log.d(LOG_TAG, "updateSeason")
         seasonTitleTextView.text = seasonResponse.Title
         episodeAdapter.updateSeasonResponse(seasonResponse)
+        episodeRecyclerView.scrollToPosition(0)
     }
 
 }
